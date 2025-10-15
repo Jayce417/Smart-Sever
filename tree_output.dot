@@ -1,0 +1,56 @@
+digraph {
+	rankdir=LR
+	subgraph cluster_0 {
+		color=peru rankdir=LR style=rounded
+		0 [label="start\n0.00" color=chocolate fontname="Courier New" fontsize=8.0 height=0.05 shape=box style=rounded width=0.25]
+		"0yes" [label=yes color=chocolate fontname="Courier New" fontsize=8.0 height=0.05 shape=box style=rounded]
+		0 -> "0yes" [arrowsize=0.3 color=black penwidth=1]
+		"0no" [label=no color=chocolate fontname="Courier New" fontsize=8.0 height=0.05 shape=box style=rounded]
+		0 -> "0no" [arrowsize=0.3 color=red penwidth=2]
+	}
+	subgraph cluster_1 {
+		color=darkseagreen rankdir=LR style=rounded
+		1 [label="market\n59.20" color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.05 shape=ellipse width=0.25]
+		"1yes" [label=yes color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		1 -> "1yes" [arrowsize=0.3 color=black penwidth=1]
+		"1no" [label=no color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		1 -> "1no" [arrowsize=0.3 color=black penwidth=1]
+	}
+	subgraph cluster_2 {
+		color=darkseagreen rankdir=LR style=rounded
+		2 [label="sale\n1074.00" color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.05 shape=ellipse width=0.25]
+		"2great" [label=great color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		2 -> "2great" [arrowsize=0.3 color=black penwidth=1]
+		"2fair" [label=fair color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		2 -> "2fair" [arrowsize=0.3 color=black penwidth=1]
+		"2awful" [label=awful color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		2 -> "2awful" [arrowsize=0.3 color=black penwidth=1]
+	}
+	subgraph cluster_3 {
+		color=white rankdir=LR
+		3 [label="4800.00 .0000%" color=powderblue fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=filled width=0.25]
+	}
+	"2great" -> 3 [arrowsize=0.3 color=black penwidth=1]
+	subgraph cluster_4 {
+		color=white rankdir=LR
+		4 [label="-600.00 .0000%" color=powderblue fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=filled width=0.25]
+	}
+	"2fair" -> 4 [arrowsize=0.3 color=black penwidth=1]
+	subgraph cluster_5 {
+		color=white rankdir=LR
+		5 [label="-4380.00 .0000%" color=powderblue fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=filled width=0.25]
+	}
+	"2awful" -> 5 [arrowsize=0.3 color=black penwidth=1]
+	"1yes" -> 2 [arrowsize=0.3 color=black penwidth=1]
+	subgraph cluster_6 {
+		color=white rankdir=LR
+		6 [label="-4000.00 .0000%" color=powderblue fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=filled width=0.25]
+	}
+	"1no" -> 6 [arrowsize=0.3 color=black penwidth=1]
+	"0yes" -> 1 [arrowsize=0.3 color=black penwidth=1]
+	subgraph cluster_7 {
+		color=white rankdir=LR
+		7 [label="0.00 1.000%" color=powderblue fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=filled width=0.25]
+	}
+	"0no" -> 7 [arrowsize=0.3 color=red penwidth=2]
+}

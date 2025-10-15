@@ -1,0 +1,84 @@
+{
+    "nodes": [
+        {
+            "name": "bid",
+            "type": "decision",
+            "maximize": true,
+            "branches": [
+                {
+                    "label": "low",
+                    "value": 300,
+                    "next": "competitor_bid"
+                },
+                {
+                    "label": "medium",
+                    "value": 500,
+                    "next": "competitor_bid"
+                },
+                {
+                    "label": "high",
+                    "value": 700,
+                    "next": "competitor_bid"
+                },
+                {
+                    "label": "no-bid",
+                    "value": 0,
+                    "next": "profit"
+                }
+            ]
+        },
+        {
+            "name": "competitor_bid",
+            "type": "chance",
+            "branches": [
+                {
+                    "label": "low",
+                    "probability": 0.35,
+                    "value": 400,
+                    "next": "cost"
+                },
+                {
+                    "label": "medium",
+                    "probability": 0.50,
+                    "value": 600,
+                    "next": "cost"
+                },
+                {
+                    "label": "high",
+                    "probability": 0.15,
+                    "value": 800,
+                    "next": "cost"
+                }
+            ]
+        },
+        {
+            "name": "cost",
+            "type": "chance",
+            "branches": [
+                {
+                    "label": "low",
+                    "probability": 0.25,
+                    "value": 200,
+                    "next": "profit"
+                },
+                {
+                    "label": "medium",
+                    "probability": 0.50,
+                    "value": 400,
+                    "next": "profit"
+                },
+                {
+                    "label": "high",
+                    "probability": 0.25,
+                    "value": 600,
+                    "next": "profit"
+                }
+            ]
+        },
+        {
+            "name": "profit",
+            "type": "terminal",
+            "payoff": 150
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+README.md
+pyproject.toml
+smart_server/smart_server.egg-info/PKG-INFO
+smart_server/smart_server.egg-info/SOURCES.txt
+smart_server/smart_server.egg-info/dependency_links.txt
+smart_server/smart_server.egg-info/requires.txt
+smart_server/smart_server.egg-info/top_level.txt

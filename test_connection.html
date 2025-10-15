@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>连接功能测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .test-result {
+            margin: 10px 0;
+            padding: 10px;
+            background: #f0f0f0;
+            border-radius: 3px;
+        }
+
+        .success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>决策树连接功能测试</h1>
+
+    <div class="test-section">
+        <h2>功能变更说明</h2>
+        <ul>
+            <li><strong>移除自动连接同名节点</strong>：不再支持输入节点名称自动连接所有同名节点</li>
+            <li><strong>改为手动选择连接</strong>：现在需要手动选择源节点和目标节点</li>
+            <li><strong>修复编辑连接保存问题</strong>：编辑连接时现在可以正确保存修改</li>
+            <li><strong>支持值和概率编辑</strong>：连接时可以设置分支值和概率</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>测试步骤</h2>
+        <ol>
+            <li>启动应用：<code>npm run dev</code></li>
+            <li>添加几个节点（决策节点、概率节点、终止节点）</li>
+            <li>点击"连接节点"按钮</li>
+            <li>选择源节点和目标节点</li>
+            <li>设置连接标签、分支值、概率（如果适用）</li>
+            <li>保存连接</li>
+            <li>在连接列表中点击"编辑"按钮</li>
+            <li>修改连接属性并保存</li>
+            <li>验证修改是否正确保存</li>
+        </ol>
+    </div>
+
+    <div class="test-section">
+        <h2>预期结果</h2>
+        <div class="test-result success">
+            ✅ 连接对话框显示源节点和目标节点的下拉选择框
+        </div>
+        <div class="test-result success">
+            ✅ 可以设置分支值和概率（概率节点）
+        </div>
+        <div class="test-result success">
+            ✅ 连接列表显示连接信息和值/概率
+        </div>
+        <div class="test-result success">
+            ✅ 编辑连接时可以修改所有属性并正确保存
+        </div>
+        <div class="test-result success">
+            ✅ 不再支持自动连接同名节点
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>主要改进</h2>
+        <ul>
+            <li><strong>更精确的控制</strong>：用户可以选择具体的节点进行连接</li>
+            <li><strong>更好的用户体验</strong>：避免了同名节点造成的混淆</li>
+            <li><strong>完整的数据编辑</strong>：支持编辑连接的所有属性</li>
+            <li><strong>修复的保存逻辑</strong>：编辑连接时数据能正确保存</li>
+        </ul>
+    </div>
+</body>
+
+</html>

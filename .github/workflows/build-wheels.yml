@@ -1,0 +1,155 @@
+name: Build Wheel Packages
+
+on:
+  push:
+    branches: [main, master, develop]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  build-wheels:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.9", "3.10", "3.11"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install build dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install build wheel setuptools twine
+
+      # Build smart-choice first (since smart_server depends on it)
+      - name: Build smart-choice wheel
+        run: |
+          cd smart-choice
+          python -m build --wheel --sdist
+          echo "Smart choice wheel built successfully"
+          ls -la dist/
+
+      # Install smart-choice locally for smart_server dependency
+      - name: Install smart-choice locally
+        run: |
+          pip install ./smart-choice/dist/*.whl
+
+      - name: Build smart_server wheel
+        run: |
+          cd smart_server
+          python -m build --wheel --sdist
+          echo "Smart server wheel built successfully"
+          ls -la dist/
+
+      - name: Upload smart-choice artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: smart-choice-packages-py${{ matrix.python-version }}
+          path: |
+            smart-choice/dist/*.whl
+            smart-choice/dist/*.tar.gz
+
+      - name: Upload smart_server artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: smart_server-packages-py${{ matrix.python-version }}
+          path: |
+            smart_server/dist/*.whl
+            smart_server/dist/*.tar.gz
+
+  test-wheels:
+    needs: build-wheels
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.9", "3.10", "3.11"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Download smart-choice packages
+        uses: actions/download-artifact@v3
+        with:
+          name: smart-choice-packages-py${{ matrix.python-version }}
+          path: ./wheels/smart-choice/
+
+      - name: Download smart_server packages
+        uses: actions/download-artifact@v3
+        with:
+          name: smart_server-packages-py${{ matrix.python-version }}
+          path: ./wheels/smart_server/
+
+      - name: Test smart-choice wheel installation
+        run: |
+          pip install ./wheels/smart-choice/*.whl
+          python -c "import smart_choice; print('Smart choice version:', getattr(smart_choice, '__version__', 'unknown'))"
+
+      - name: Test smart_server wheel installation
+        run: |
+          pip install ./wheels/smart_server/*.whl
+          python -c "import smart_server; print('Smart server version:', getattr(smart_server, '__version__', 'unknown'))"
+
+  publish-to-testpypi:
+    needs: [build-wheels, test-wheels]
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    strategy:
+      matrix:
+        python-version: ["3.11"] # Only use one Python version for publishing
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Download smart-choice packages
+        uses: actions/download-artifact@v3
+        with:
+          name: smart-choice-packages-py${{ matrix.python-version }}
+          path: ./dist/smart-choice/
+
+      - name: Download smart_server packages
+        uses: actions/download-artifact@v3
+        with:
+          name: smart_server-packages-py${{ matrix.python-version }}
+          path: ./dist/smart_server/
+
+      - name: Install twine
+        run: pip install twine
+
+      # Uncomment the following steps if you want to publish to TestPyPI
+      # You'll need to add TESTPYPI_API_TOKEN to your repository secrets
+
+      # - name: Publish smart-choice to TestPyPI
+      #   env:
+      #     TWINE_USERNAME: __token__
+      #     TWINE_PASSWORD: ${{ secrets.TESTPYPI_API_TOKEN }}
+      #   run: |
+      #     twine upload --repository testpypi ./dist/smart-choice/*
+
+      # - name: Publish smart_server to TestPyPI
+      #   env:
+      #     TWINE_USERNAME: __token__
+      #     TWINE_PASSWORD: ${{ secrets.TESTPYPI_API_TOKEN }}
+      #   run: |
+      #     twine upload --repository testpypi ./dist/smart_server/*
+
+      - name: List all built packages
+        run: |
+          echo "Smart-choice packages:"
+          ls -la ./dist/smart-choice/
+          echo "Smart_server packages:"
+          ls -la ./dist/smart_server/
