@@ -276,9 +276,9 @@ class SmartServer:
                     )
                 else:
                     tree.rollback(view=method)
-
+                tree.display(view=method)
                 # 生成 dot 文件
-                dot = tree.plot()
+                dot = tree.plot(view=method)
                 dot_content = dot.source
                 # print(tree)
 
