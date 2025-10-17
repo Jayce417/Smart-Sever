@@ -1,0 +1,287 @@
+digraph {
+	rankdir=LR
+	subgraph cluster_0 {
+		color=peru rankdir=LR style=rounded
+		0 [label="bid\n65.00" color=chocolate fontname="Courier New" fontsize=8.0 height=0.05 shape=box style=rounded width=0.25]
+		"0low" [label=low color=chocolate fontname="Courier New" fontsize=8.0 height=0.05 shape=box style=rounded]
+		0 -> "0low" [arrowsize=0.3 penwidth=1]
+		"0medium" [label=medium color=chocolate fontname="Courier New" fontsize=8.0 height=0.05 shape=box style=rounded]
+		0 -> "0medium" [arrowsize=0.3 penwidth=2]
+		"0high" [label=high color=chocolate fontname="Courier New" fontsize=8.0 height=0.05 shape=box style=rounded]
+		0 -> "0high" [arrowsize=0.3 penwidth=1]
+		"0no-bid" [label="no-bid" color=chocolate fontname="Courier New" fontsize=8.0 height=0.05 shape=box style=rounded]
+		0 -> "0no-bid" [arrowsize=0.3 penwidth=1]
+	}
+	subgraph cluster_1 {
+		color=darkseagreen rankdir=LR style=rounded
+		1 [label="competitor_bid\n-100.00" color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.05 shape=ellipse width=0.25]
+		"1low" [label=low color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		1 -> "1low" [arrowsize=0.3 penwidth=1]
+		"1medium" [label=medium color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		1 -> "1medium" [arrowsize=0.3 penwidth=1]
+		"1high" [label=high color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		1 -> "1high" [arrowsize=0.3 penwidth=1]
+	}
+	subgraph cluster_2 {
+		color=darkseagreen rankdir=LR style=rounded
+		2 [label="cost\n-100.00" color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.05 shape=ellipse width=0.25]
+		"2low" [label=low color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		2 -> "2low" [arrowsize=0.3 penwidth=1]
+		"2medium" [label=medium color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		2 -> "2medium" [arrowsize=0.3 penwidth=1]
+		"2high" [label=high color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		2 -> "2high" [arrowsize=0.3 penwidth=1]
+	}
+	subgraph cluster_3 {
+		color=white rankdir=LR
+		3 [label="100.00 .0000%" color=powderblue fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=filled width=0.25]
+	}
+	"2low" -> 3 [arrowsize=0.3 penwidth=1]
+	subgraph cluster_4 {
+		color=white rankdir=LR
+		4 [label="-100.00 .0000%" color=powderblue fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=filled width=0.25]
+	}
+	"2medium" -> 4 [arrowsize=0.3 penwidth=1]
+	subgraph cluster_5 {
+		color=white rankdir=LR
+		5 [label="-300.00 .0000%" color=powderblue fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=filled width=0.25]
+	}
+	"2high" -> 5 [arrowsize=0.3 penwidth=1]
+	"1low" -> 2 [arrowsize=0.3 penwidth=1]
+	subgraph cluster_6 {
+		color=darkseagreen rankdir=LR style=rounded
+		6 [label="cost\n-100.00" color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.05 shape=ellipse width=0.25]
+		"6low" [label=low color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		6 -> "6low" [arrowsize=0.3 penwidth=1]
+		"6medium" [label=medium color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		6 -> "6medium" [arrowsize=0.3 penwidth=1]
+		"6high" [label=high color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		6 -> "6high" [arrowsize=0.3 penwidth=1]
+	}
+	subgraph cluster_7 {
+		color=white rankdir=LR
+		7 [label="100.00 .0000%" color=powderblue fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=filled width=0.25]
+	}
+	"6low" -> 7 [arrowsize=0.3 penwidth=1]
+	subgraph cluster_8 {
+		color=white rankdir=LR
+		8 [label="-100.00 .0000%" color=powderblue fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=filled width=0.25]
+	}
+	"6medium" -> 8 [arrowsize=0.3 penwidth=1]
+	subgraph cluster_9 {
+		color=white rankdir=LR
+		9 [label="-300.00 .0000%" color=powderblue fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=filled width=0.25]
+	}
+	"6high" -> 9 [arrowsize=0.3 penwidth=1]
+	"1medium" -> 6 [arrowsize=0.3 penwidth=1]
+	subgraph cluster_10 {
+		color=darkseagreen rankdir=LR style=rounded
+		10 [label="cost\n-100.00" color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.05 shape=ellipse width=0.25]
+		"10low" [label=low color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		10 -> "10low" [arrowsize=0.3 penwidth=1]
+		"10medium" [label=medium color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		10 -> "10medium" [arrowsize=0.3 penwidth=1]
+		"10high" [label=high color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		10 -> "10high" [arrowsize=0.3 penwidth=1]
+	}
+	subgraph cluster_11 {
+		color=white rankdir=LR
+		11 [label="100.00 .0000%" color=powderblue fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=filled width=0.25]
+	}
+	"10low" -> 11 [arrowsize=0.3 penwidth=1]
+	subgraph cluster_12 {
+		color=white rankdir=LR
+		12 [label="-100.00 .0000%" color=powderblue fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=filled width=0.25]
+	}
+	"10medium" -> 12 [arrowsize=0.3 penwidth=1]
+	subgraph cluster_13 {
+		color=white rankdir=LR
+		13 [label="-300.00 .0000%" color=powderblue fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=filled width=0.25]
+	}
+	"10high" -> 13 [arrowsize=0.3 penwidth=1]
+	"1high" -> 10 [arrowsize=0.3 penwidth=1]
+	"0low" -> 1 [arrowsize=0.3 penwidth=1]
+	subgraph cluster_14 {
+		color=darkseagreen rankdir=LR style=rounded
+		14 [label="competitor_bid\n65.00" color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.05 shape=ellipse width=0.25]
+		"14low" [label=low color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		14 -> "14low" [arrowsize=0.3 penwidth=2]
+		"14medium" [label=medium color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		14 -> "14medium" [arrowsize=0.3 penwidth=2]
+		"14high" [label=high color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		14 -> "14high" [arrowsize=0.3 penwidth=2]
+	}
+	subgraph cluster_15 {
+		color=darkseagreen rankdir=LR style=rounded
+		15 [label="cost\n0.00" color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.05 shape=ellipse width=0.25]
+		"15low" [label=low color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		15 -> "15low" [arrowsize=0.3 penwidth=2]
+		"15medium" [label=medium color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		15 -> "15medium" [arrowsize=0.3 penwidth=2]
+		"15high" [label=high color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		15 -> "15high" [arrowsize=0.3 penwidth=2]
+	}
+	subgraph cluster_16 {
+		color=white rankdir=LR
+		16 [label="0.00 .0875%" color=powderblue fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=filled width=0.25]
+	}
+	"15low" -> 16 [arrowsize=0.3 penwidth=2]
+	subgraph cluster_17 {
+		color=white rankdir=LR
+		17 [label="0.00 .1750%" color=powderblue fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=filled width=0.25]
+	}
+	"15medium" -> 17 [arrowsize=0.3 penwidth=2]
+	subgraph cluster_18 {
+		color=white rankdir=LR
+		18 [label="-0.00 .0875%" color=powderblue fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=filled width=0.25]
+	}
+	"15high" -> 18 [arrowsize=0.3 penwidth=2]
+	"14low" -> 15 [arrowsize=0.3 penwidth=2]
+	subgraph cluster_19 {
+		color=darkseagreen rankdir=LR style=rounded
+		19 [label="cost\n100.00" color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.05 shape=ellipse width=0.25]
+		"19low" [label=low color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		19 -> "19low" [arrowsize=0.3 penwidth=2]
+		"19medium" [label=medium color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		19 -> "19medium" [arrowsize=0.3 penwidth=2]
+		"19high" [label=high color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		19 -> "19high" [arrowsize=0.3 penwidth=2]
+	}
+	subgraph cluster_20 {
+		color=white rankdir=LR
+		20 [label="300.00 .1250%" color=powderblue fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=filled width=0.25]
+	}
+	"19low" -> 20 [arrowsize=0.3 penwidth=2]
+	subgraph cluster_21 {
+		color=white rankdir=LR
+		21 [label="100.00 .2500%" color=powderblue fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=filled width=0.25]
+	}
+	"19medium" -> 21 [arrowsize=0.3 penwidth=2]
+	subgraph cluster_22 {
+		color=white rankdir=LR
+		22 [label="-100.00 .1250%" color=powderblue fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=filled width=0.25]
+	}
+	"19high" -> 22 [arrowsize=0.3 penwidth=2]
+	"14medium" -> 19 [arrowsize=0.3 penwidth=2]
+	subgraph cluster_23 {
+		color=darkseagreen rankdir=LR style=rounded
+		23 [label="cost\n100.00" color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.05 shape=ellipse width=0.25]
+		"23low" [label=low color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		23 -> "23low" [arrowsize=0.3 penwidth=2]
+		"23medium" [label=medium color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		23 -> "23medium" [arrowsize=0.3 penwidth=2]
+		"23high" [label=high color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		23 -> "23high" [arrowsize=0.3 penwidth=2]
+	}
+	subgraph cluster_24 {
+		color=white rankdir=LR
+		24 [label="300.00 .0375%" color=powderblue fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=filled width=0.25]
+	}
+	"23low" -> 24 [arrowsize=0.3 penwidth=2]
+	subgraph cluster_25 {
+		color=white rankdir=LR
+		25 [label="100.00 .0750%" color=powderblue fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=filled width=0.25]
+	}
+	"23medium" -> 25 [arrowsize=0.3 penwidth=2]
+	subgraph cluster_26 {
+		color=white rankdir=LR
+		26 [label="-100.00 .0375%" color=powderblue fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=filled width=0.25]
+	}
+	"23high" -> 26 [arrowsize=0.3 penwidth=2]
+	"14high" -> 23 [arrowsize=0.3 penwidth=2]
+	"0medium" -> 14 [arrowsize=0.3 penwidth=2]
+	subgraph cluster_27 {
+		color=darkseagreen rankdir=LR style=rounded
+		27 [label="competitor_bid\n45.00" color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.05 shape=ellipse width=0.25]
+		"27low" [label=low color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		27 -> "27low" [arrowsize=0.3 penwidth=1]
+		"27medium" [label=medium color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		27 -> "27medium" [arrowsize=0.3 penwidth=1]
+		"27high" [label=high color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		27 -> "27high" [arrowsize=0.3 penwidth=1]
+	}
+	subgraph cluster_28 {
+		color=darkseagreen rankdir=LR style=rounded
+		28 [label="cost\n0.00" color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.05 shape=ellipse width=0.25]
+		"28low" [label=low color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		28 -> "28low" [arrowsize=0.3 penwidth=1]
+		"28medium" [label=medium color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		28 -> "28medium" [arrowsize=0.3 penwidth=1]
+		"28high" [label=high color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		28 -> "28high" [arrowsize=0.3 penwidth=1]
+	}
+	subgraph cluster_29 {
+		color=white rankdir=LR
+		29 [label="0.00 .0000%" color=powderblue fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=filled width=0.25]
+	}
+	"28low" -> 29 [arrowsize=0.3 penwidth=1]
+	subgraph cluster_30 {
+		color=white rankdir=LR
+		30 [label="0.00 .0000%" color=powderblue fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=filled width=0.25]
+	}
+	"28medium" -> 30 [arrowsize=0.3 penwidth=1]
+	subgraph cluster_31 {
+		color=white rankdir=LR
+		31 [label="0.00 .0000%" color=powderblue fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=filled width=0.25]
+	}
+	"28high" -> 31 [arrowsize=0.3 penwidth=1]
+	"27low" -> 28 [arrowsize=0.3 penwidth=1]
+	subgraph cluster_32 {
+		color=darkseagreen rankdir=LR style=rounded
+		32 [label="cost\n0.00" color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.05 shape=ellipse width=0.25]
+		"32low" [label=low color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		32 -> "32low" [arrowsize=0.3 penwidth=1]
+		"32medium" [label=medium color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		32 -> "32medium" [arrowsize=0.3 penwidth=1]
+		"32high" [label=high color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		32 -> "32high" [arrowsize=0.3 penwidth=1]
+	}
+	subgraph cluster_33 {
+		color=white rankdir=LR
+		33 [label="0.00 .0000%" color=powderblue fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=filled width=0.25]
+	}
+	"32low" -> 33 [arrowsize=0.3 penwidth=1]
+	subgraph cluster_34 {
+		color=white rankdir=LR
+		34 [label="0.00 .0000%" color=powderblue fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=filled width=0.25]
+	}
+	"32medium" -> 34 [arrowsize=0.3 penwidth=1]
+	subgraph cluster_35 {
+		color=white rankdir=LR
+		35 [label="0.00 .0000%" color=powderblue fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=filled width=0.25]
+	}
+	"32high" -> 35 [arrowsize=0.3 penwidth=1]
+	"27medium" -> 32 [arrowsize=0.3 penwidth=1]
+	subgraph cluster_36 {
+		color=darkseagreen rankdir=LR style=rounded
+		36 [label="cost\n300.00" color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.05 shape=ellipse width=0.25]
+		"36low" [label=low color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		36 -> "36low" [arrowsize=0.3 penwidth=1]
+		"36medium" [label=medium color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		36 -> "36medium" [arrowsize=0.3 penwidth=1]
+		"36high" [label=high color=darkseagreen fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=rounded]
+		36 -> "36high" [arrowsize=0.3 penwidth=1]
+	}
+	subgraph cluster_37 {
+		color=white rankdir=LR
+		37 [label="500.00 .0000%" color=powderblue fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=filled width=0.25]
+	}
+	"36low" -> 37 [arrowsize=0.3 penwidth=1]
+	subgraph cluster_38 {
+		color=white rankdir=LR
+		38 [label="300.00 .0000%" color=powderblue fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=filled width=0.25]
+	}
+	"36medium" -> 38 [arrowsize=0.3 penwidth=1]
+	subgraph cluster_39 {
+		color=white rankdir=LR
+		39 [label="100.00 .0000%" color=powderblue fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=filled width=0.25]
+	}
+	"36high" -> 39 [arrowsize=0.3 penwidth=1]
+	"27high" -> 36 [arrowsize=0.3 penwidth=1]
+	"0high" -> 27 [arrowsize=0.3 penwidth=1]
+	subgraph cluster_40 {
+		color=white rankdir=LR
+		40 [label="0.00 .0000%" color=powderblue fontname="Courier New" fontsize=8.0 height=0.1 shape=box style=filled width=0.25]
+	}
+	"0no-bid" -> 40 [arrowsize=0.3 penwidth=1]
+}

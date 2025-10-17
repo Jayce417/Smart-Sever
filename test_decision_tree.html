@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>决策树可视化系统测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .test-result {
+            margin: 10px 0;
+            padding: 10px;
+            background: #f0f0f0;
+            border-radius: 3px;
+        }
+
+        .success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .warning {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        code {
+            background: #f8f9fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .code-block {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #007bff;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>决策树可视化系统测试</h1>
+
+    <div class="test-section">
+        <h2>系统概述</h2>
+        <p>这是一个基于 Vue 3 的决策树可视化系统，支持三种节点类型：</p>
+        <ul>
+            <li><strong>决策节点 (Decision Node)</strong>：用户可以选择不同分支的决策点</li>
+            <li><strong>机会节点 (Chance Node)</strong>：表示随机事件，包含概率信息</li>
+            <li><strong>结束节点 (Terminal Node)</strong>：决策树的叶子节点，包含收益值</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>分支格式说明</h2>
+
+        <h3>决策节点分支格式</h3>
+        <div class="code-block">("low", 300, "competitor_bid") # (标签, 值, 目标节点名称)
+            ("medium", 500, "competitor_bid")
+            ("high", 700, "competitor_bid")
+            ("no-bid", 0, "profit")</div>
+
+        <h3>机会节点分支格式</h3>
+        <div class="code-block">("low", 0.35, 400, "cost") # (标签, 概率, 值, 目标节点名称)
+            ("medium", 0.50, 600, "cost")
+            ("high", 0.15, 800, "cost")</div>
+    </div>
+
+    <div class="test-section">
+        <h2>功能测试步骤</h2>
+        <ol>
+            <li><strong>启动应用</strong>：<code>npm run dev</code></li>
+            <li><strong>创建节点</strong>：
+                <ul>
+                    <li>点击"添加节点"按钮</li>
+                    <li>输入节点名称（如：bid, competitor_bid, cost, profit）</li>
+                    <li>选择节点类型</li>
+                </ul>
+            </li>
+            <li><strong>配置分支</strong>：
+                <ul>
+                    <li>双击节点进行编辑</li>
+                    <li>添加分支信息</li>
+                    <li>设置分支标签、值、概率（机会节点）</li>
+                    <li>输入目标节点名称</li>
+                </ul>
+            </li>
+            <li><strong>手动连接</strong>：
+                <ul>
+                    <li>点击"连接节点"按钮</li>
+                    <li>选择源节点和目标节点</li>
+                    <li>设置连接标签、分支值、概率</li>
+                </ul>
+            </li>
+            <li><strong>编辑连接</strong>：
+                <ul>
+                    <li>在连接列表中点击"编辑"按钮</li>
+                    <li>修改连接属性</li>
+                    <li>保存修改</li>
+                </ul>
+            </li>
+            <li><strong>导出/导入</strong>：
+                <ul>
+                    <li>测试导出功能</li>
+                    <li>测试导入功能</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+    <div class="test-section">
+        <h2>预期功能</h2>
+        <div class="test-result success">
+            ✅ 支持三种节点类型：决策节点、机会节点、结束节点
+        </div>
+        <div class="test-result success">
+            ✅ 决策节点支持最大化/最小化设置
+        </div>
+        <div class="test-result success">
+            ✅ 机会节点支持概率和值的设置
+        </div>
+        <div class="test-result success">
+            ✅ 结束节点支持收益值设置
+        </div>
+        <div class="test-result success">
+            ✅ 支持分支格式：决策节点 (标签, 值, 目标节点)，机会节点 (标签, 概率, 值, 目标节点)
+        </div>
+        <div class="test-result success">
+            ✅ 可视化功能：拖拽节点、双击编辑、实时连接线
+        </div>
+        <div class="test-result success">
+            ✅ 数据管理：导出/导入 JSON 格式
+        </div>
+        <div class="test-result success">
+            ✅ 连接管理：手动连接、编辑连接、删除连接
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>示例决策树</h2>
+        <div class="test-result info">
+            <strong>示例结构：</strong>
+            <ul>
+                <li><strong>bid</strong> (决策节点) → competitor_bid</li>
+                <li><strong>competitor_bid</strong> (机会节点) → cost</li>
+                <li><strong>cost</strong> (机会节点) → profit</li>
+                <li><strong>profit</strong> (结束节点)</li>
+            </ul>
+        </div>
+
+        <h3>分支配置示例</h3>
+        <div class="code-block"># bid 节点分支
+            ("low", 300, "competitor_bid")
+            ("medium", 500, "competitor_bid")
+            ("high", 700, "competitor_bid")
+            ("no-bid", 0, "profit")
+
+            # competitor_bid 节点分支
+            ("low", 0.35, 400, "cost")
+            ("medium", 0.50, 600, "cost")
+            ("high", 0.15, 800, "cost")
+
+            # cost 节点分支
+            ("low", 0.25, 200, "profit")
+            ("medium", 0.50, 400, "profit")
+            ("high", 0.25, 600, "profit")</div>
+    </div>
+
+    <div class="test-section">
+        <h2>技术特点</h2>
+        <ul>
+            <li><strong>Vue 3 Composition API</strong>：现代化的响应式开发</li>
+            <li><strong>Element Plus</strong>：丰富的 UI 组件库</li>
+            <li><strong>D3.js</strong>：强大的数据可视化能力</li>
+            <li><strong>拖拽交互</strong>：直观的节点位置调整</li>
+            <li><strong>实时编辑</strong>：双击节点快速编辑</li>
+            <li><strong>数据同步</strong>：节点和连接信息实时同步</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>使用提示</h2>
+        <div class="test-result warning">
+            💡 <strong>提示：</strong>
+            <ul>
+                <li>双击节点进行编辑</li>
+                <li>拖拽节点调整位置</li>
+                <li>手动连接节点</li>
+                <li>在连接列表中编辑连接属性</li>
+                <li>使用导出/导入功能保存和恢复决策树</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

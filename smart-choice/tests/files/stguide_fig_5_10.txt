@@ -1,0 +1,12 @@
+low; EV=65.00
+   Value  Probability  Cumulative Probability
+0   -100       0.1625                  0.1625
+1      0       0.3500                  0.5125
+2    100       0.3250                  0.8375
+3    300       0.1625                  1.0000
+high; EV=45.00
+   Value  Probability  Cumulative Probability
+0      0       0.8500                  0.8500
+1    100       0.0375                  0.8875
+2    300       0.0750                  0.9625
+3    500       0.0375                  1.0000
