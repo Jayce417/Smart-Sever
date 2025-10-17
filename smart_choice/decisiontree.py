@@ -1033,7 +1033,9 @@ class DecisionTree:
     #  P L O T
     #
     #
-    def plot(self, max_deep: int = None, policy_suggestion: bool = False):
+    def plot(
+        self, max_deep: int = None, policy_suggestion: bool = False, view: str = "ev"
+    ):
         """Plots the tree.
 
         :param max_deep: maximum deep of the tree nodes to be plotted.
@@ -1052,7 +1054,16 @@ class DecisionTree:
         def terminal(idx: int, main_dot, max_deep: int, deep: int):
             name = self._tree_nodes[idx].get("name")
             label = ""
-            if "EV" in self._tree_nodes[idx].keys():
+            nonlocal view
+
+            # if "EV" in self._tree_nodes[idx].keys():
+            if view == "ev":
+                expval = self._tree_nodes[idx].get("EV")
+                label += "{:.2f}".format(expval)
+            elif view == "eu":
+                expval = self._tree_nodes[idx].get("EU")
+                label += "{:.2f}".format(expval)
+            elif view == "ev":
                 expval = self._tree_nodes[idx].get("EV")
                 label += "{:.2f}".format(expval)
             if "PathProb" in self._tree_nodes[idx].keys():
@@ -1087,10 +1098,18 @@ class DecisionTree:
             # It's the maximum deep
             #
             deep += 1
+            nonlocal view
             if max_deep is not None and deep >= max_deep:
                 label = self._tree_nodes[idx].get("name")
-                if "EV" in self._tree_nodes[idx].keys():
+                # if "EV" in self._tree_nodes[idx].keys():
+                if view == "ev":
                     expval = self._tree_nodes[idx].get("EV")
+                    label += r"\n{:0.2f}".format(expval)
+                elif view == "eu":
+                    expval = self._tree_nodes[idx].get("EU")
+                    label += r"\n{:0.2f}".format(expval)
+                elif view == "ce":
+                    expval = self._tree_nodes[idx].get("CE")
                     label += r"\n{:0.2f}".format(expval)
 
                 main_dot.node(
@@ -1112,8 +1131,17 @@ class DecisionTree:
             dot = Digraph(name="cluster_" + str(idx))
             dot.attr(rankdir="LR", style="rounded", color="darkseagreen")
 
-            if "EV" in self._tree_nodes[idx].keys():
+            # if "EV" in self._tree_nodes[idx].keys():
+            #     expval = self._tree_nodes[idx].get("EV")
+            #     label += r"\n{:0.2f}".format(expval)
+            if view == "ev":
                 expval = self._tree_nodes[idx].get("EV")
+                label += r"\n{:0.2f}".format(expval)
+            elif view == "ce":
+                expval = self._tree_nodes[idx].get("CE")
+                label += r"\n{:0.2f}".format(expval)
+            elif view == "eu":
+                expval = self._tree_nodes[idx].get("EU")
                 label += r"\n{:0.2f}".format(expval)
 
             dot.node(
@@ -1184,12 +1212,21 @@ class DecisionTree:
 
         def decision(idx: int, main_dot, max_deep: int, deep: int):
             name = self._tree_nodes[idx].get("name")
+            nonlocal view
 
             label = name
-            if "EV" in self._tree_nodes[idx].keys():
+            # if "EV" in self._tree_nodes[idx].keys():
+            #     expval = self._tree_nodes[idx].get("EV")
+            #     label += r"\n{:0.2f}".format(expval)
+            if view == "ev":
                 expval = self._tree_nodes[idx].get("EV")
                 label += r"\n{:0.2f}".format(expval)
-
+            elif view == "ce":
+                expval = self._tree_nodes[idx].get("CE")
+                label += r"\n{:0.2f}".format(expval)
+            elif view == "eu":
+                expval = self._tree_nodes[idx].get("EU")
+                label += r"\n{:0.2f}".format(expval)
             dot = Digraph(name="cluster_" + str(idx))
             dot.attr(rankdir="LR", style="rounded", color="peru")
             dot.node(
